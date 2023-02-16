@@ -36,6 +36,10 @@ find_library( # Sets the name of the path variable.
         # you want CMake to locate.
         log)
 
+target_include_directories(
+        firebirdandroidcpp PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
