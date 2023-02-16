@@ -2,8 +2,9 @@ package com.example.firebirdandroidcpp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.example.firebirdandroidcpp.databinding.ActivityMainBinding
+import org.firebirdsql.android.embedded.FirebirdConf
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,18 +13,30 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        FirebirdConf.extractAssets(baseContext, false)
+        FirebirdConf.setEnv(baseContext)
+
+        connect(File(filesDir, "test.fdb").absolutePath)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Example of a call to a native method
-        binding.sampleText.text = stringFromJNI()
+        try {
+            binding.sampleText.text = getCurrentTimestamp()
+        }
+        catch (e: Exception) {
+            binding.sampleText.text = "Error: ${e.message}"
+        }
     }
 
-    /**
-     * A native method that is implemented by the 'firebirdandroidcpp' native library,
-     * which is packaged with this application.
-     */
-    external fun stringFromJNI(): String
+    override fun onDestroy() {
+        disconnect();
+        super.onDestroy()
+    }
+
+    private external fun connect(databaseName: String)
+    private external fun disconnect()
+    private external fun getCurrentTimestamp(): String
 
     companion object {
         // Used to load the 'firebirdandroidcpp' library on application startup.
