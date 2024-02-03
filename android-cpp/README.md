@@ -31,9 +31,7 @@ index 5aa45e5..10a1fdd 100644
 ```
 
 Then we need to download a `Firebird embedded AAR` - an Android archive with Firebird libraries compiled to the four Android ABIs (armeabi-v7a, arm64-v8a, x86, x86_64).
-
-Currently only Firebird 5 beta snapshots are bundled as AAR and they can be downloaded from https://github.com/FirebirdSQL/snapshots/releases/tag/snapshot-master.
-Don't rely on them for important work.
+This package is available since Firebird 5.0.0.
 
 We will download the file and save as `android-cpp/app/libs/Firebird-5.0.0-android-embedded.aar`.
 
