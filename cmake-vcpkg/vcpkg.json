@@ -1,0 +1,14 @@
+{
+  "name": "firebird-vcpkg-example",
+  "version-string": "0.0.1",
+  "dependencies": [
+    "firebird"
+  ],
+  "overrides": [
+    {
+      "name": "firebird",
+      "version": "5.0.0"
+    }
+  ],
+  "builtin-baseline": "949aa82dd98f0a922f0e49b67542f9a2c0defcf1"
+}

@@ -1,0 +1,7 @@
+{
+  "default-registry": {
+    "kind": "git",
+    "repository": "https://github.com/asfernandes/temp-firebird-vcpkg.git",
+    "baseline": "0c8aba5a6973ec0db6e1185d2e729621ceb775ef"
+  }
+}
